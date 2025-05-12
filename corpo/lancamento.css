@@ -81,72 +81,52 @@ body {
     height: auto;
   }
 
-  .carros-container {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap; /* Para quebrar em telas pequenas */
-    margin-top: 40px;
-  }
-  
-  .modelo-carro {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    width: 300px; /* Ou o tamanho que você quiser */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  } 
-  
-  .modelo-carro:hover {
-    transform: translateY(-5px);
-  }
-  
-  .modelo-carro img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
-  
-  .modelo-carro h2 {
-    color: #4169E1;
-    margin: 15px 0;
-  }
-  
-  .modelo-carro p {
-    margin: 5px 0;
-  }
-  
-  .checkbox-modelo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 15px;
-    font-size: 16px;
-    color: #333;
-    gap: 8px;
-  }
+ .tabela-modelos {
+    border-collapse: collapse;
+    text-align: center;
+    white-space: nowrap; /* Não vai terrr quebra de linhaaa */
+ }
 
-  .modelo-opcao {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 15px;
-  }
-  
-  .icone-info-img {
-    width: 14px !important; /* ícone pequeno */
-    height: 14px !important;
-    object-fit: contain;
-    cursor: pointer;
-  }
-  
-  .checkbox-modelo input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    accent-color: #4169E1;
-  }
+ .tabela-modelos td {
+ border: none;
+ padding: 20px;
+ vertical-align: top;
+ min-width: 280px; /* Ter uma largura minima  ja que tava dando erro */
+ }
 
+ .modelo-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  font-size: 15px;
+ }
+
+ .modelo-info label {
+  cursor: pointer;
+  text-align: left;
+  line-height: 1,3;
+ }
+
+ .modelo-info input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #4169E1;
+  margin-right: 5px;
+ }
+
+ .icone-info {
+  width: 18px;
+  height: 16px;
+  border-radius: 50%;
+  cursor: pointer;
+ }
+
+ .tabela-scroll {
+  overflow: auto;
+  padding: 10px 0;
+ }
   .botao-comparar-container {
     text-align: center; /* Centraliza o botão horizontalmente */
     margin-top: 20px; /* Espaço acima do botão */
@@ -167,6 +147,17 @@ body {
     background-color: #0056b3; /* Efeito hover */
   }
 
+  table {
+    width: 60%;
+    border-collapse: collapse;
+    margin: 20px auto;
+  }
+
+  th, td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: center;
+  }
   
   footer {
     background-color: #4169E1;
@@ -233,75 +224,138 @@ body {
     color: #ccc;
   }
 
-  @media (max-width: 768px) {
+  /* Estilo básico o que eu já tinha */
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
 
+  /* Telas médias */
+  @media (max-width: 768px) {
     header {
-      padding: 20px;
-      align-items: center;
-      text-align: center;
+      padding: 15px 20px;
     }
-  
-    .logo-container {
-      justify-content: center;
-      flex-direction: column;
+
+    .logo-container img {
+      height: 40px;
     }
-  
+
+    .logo-text {
+      font-size: 20px;
+    }
+
     .menu-centralizado {
-      flex-direction: column;
-      gap: 10px;
-    }
-  
-    .carros-container {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .modelo-carro {
-      width: 90%; /* para caber bem em telas pequenas */
-    }
-  
-    footer {
-      flex-direction: column;
-      text-align: center;
       gap: 20px;
     }
-  
+
+    .menu-centralizado a {
+      font-size: 16px;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    .tabela-modelos td {
+      min-width: 220px;
+      padding: 15px;
+    }
+
+    .modelo-info {
+      font-size: 14px;
+    }
+
+    footer {
+      padding: 15px 20px;
+      flex-direction: column;
+      text-align: center;
+    }
+
     .footer-left,
     .footer-center,
     .footer-right {
       justify-content: center;
-      flex-direction: column;
+      width: 100%;
+      margin-bottom: 15px;
     }
-  
+
+    .footer-social {
+      justify-content: center;
+    }
+
     .footer-right img {
-      margin-top: 10px;
+      margin: 0 auto;
     }
-  
-    .video-container {
-      padding-bottom: 56.25%; /* mantém o aspecto 16:9 do vídeo */
-    }
+
+    /* Telas menores */
+    @media (max-width: 480px) {
+      header {
+        padding: 10px 5px; /* Reduz o padding */
+      }
+
+      .logo-container {
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+
+      .menu-centralizado {
+        flex-direction: row; /* mantém a minha página na horizontal */
+        gap: 8px; /* Um espaço menor entre os itens */
+        flex-wrap: wrap; /* Caso eu precisse de quebra de linha */
+        justify-content: center;
+      }
+
+      .menu-centralizado a {
+        font-size: 14px; /* a fonte fica menor */
+        padding: 4px 8px;
+        white-space: nowrap; /* Não vai ter quebraa de texto */
+      }
+
+      /* ajustes da tela principal */
+      .tabela-modelos td {
+        min-width: 150px; /* Para celular */
+        padding: 8px;
+      }
+
+      .modelo-info {
+        flex-direction: column;
+        gap: 5px;
+        font-size: 12px;
+      }
+
+      .comparar-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+      }
+
+      /* Ajustes no footer */
+      .footer-center p {
+        font-size: 12px;
+      }
+
+      .social-icons img {
+        height: 20px;
+      }
   }
 
-  @media (max-width: 480px) {
-    .logo-text {
-      font-size: 20px;
-    }
-  
-    .menu-centralizado a {
-      font-size: 16px;
-    }
-  
-    .botao-comparar {
-      padding: 10px 20px;
-      font-size: 14px;
-    }
-  
-    .modelo-carro h2 {
-      font-size: 18px;
-    }
-  
-    .modelo-carro p {
-      font-size: 14px;
-    }
+  header {
+    background-color: #4169E1;
+    color: white;
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
   }
-  
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+  }
+}
