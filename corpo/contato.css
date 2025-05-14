@@ -7,8 +7,7 @@ body {
   
   /* CABEÇALHO */
   header {
-    background-color: #4169E1;
-    color: white;
+    color: #4169E1;
     padding: 20px 40px;
     display: flex;
     flex-direction: column;
@@ -39,11 +38,17 @@ body {
   }
 
   .menu-centralizado a {
-    color: white;
-    text-decoration: none;
+    color: #4169E1;
     font-size: 18px;
+    position: relative;
+    padding-bottom: 5px;
+    margin: 0 10px; /* Espaçamento entre os links */
+    transition: border-bottom 0.3s ease; /* Transição suave */
   }
-
+  
+  .menu-centralizado a.menu-linha {
+    text-decoration: underline;
+  }
   /* Conteúdo principal */
   main {
     font-family: sans-serif;
@@ -80,10 +85,14 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 15px;
   }
 
   .formulario label {
     margin: 10px 0 5px;
+    display: block;
   }
 
   .formulario input,
@@ -93,6 +102,11 @@ body {
     border: 1px solid #ccc;
     border-radius: 6px;
     transition: border-color 0.3s ease, box-shadowm 0.3s ease;
+    /* uma borda preta para ficar mais bonitinho */
+     border-top: 1px solid rgba(0, 0, 0, 0.1); /* Borda superior preta com 10% de opacidade */
+     border-left: 1px solid rgba(0, 0, 0, 0.1); /* Borda esquerda preta com 10% de opacidade */
+     border-right: 1px solid rgba(0, 0, 0, 0.1); /* Borda direita preta com 10% de opacidade */
+     border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Borda inferior preta com 10% de opacidade */ 
   }
 
   .formulario input:focus,
